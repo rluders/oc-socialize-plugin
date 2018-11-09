@@ -1,0 +1,26 @@
+{
+    "name": "rluders/socialize",
+    "type": "october-plugin",
+    "description": "An social network plugin for OctoberCMS",
+    "keywords": ["october", "cms", "octobercms", "api", "social network", "friends", "profile"],
+    "homepage": "http://www.luders.com.br",
+    "authors": [
+        {
+            "name": "Ricardo Lüders",
+            "email": "ricardo@luders.com.br",
+            "homepage": "http://www.luders.com.br",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "RLuders\\Socialize\\": ""
+        }
+    },
+    "require": {
+        "php": ">=7.0",
+        "composer/installers": "~1.0",
+        "intervention/image": "^2.4@dev"
+    },
+    "minimum-stability": "dev"
+}

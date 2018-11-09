@@ -1,0 +1,4 @@
+1.0.0:
+  - First version of Socialize
+  - create_friendships_table.php
+  - create_friendship_groups_table.php

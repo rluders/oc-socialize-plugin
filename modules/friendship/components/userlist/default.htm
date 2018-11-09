@@ -1,0 +1,24 @@
+<div class="row">
+    {% for friend in friends %}
+    <div class="col-md-3">
+        <div class="card border-0 my-3">
+            <div class="card-image">
+                <a href="{{ 'profile/overview'|page({user: friend.username}) }}">
+                    <img src="{{ friend.getAvatarThumb(255, {'mode': 'crop'}) }}" class="img-responsive">
+                </a>
+            </div>
+            <div class="card-body p-0">
+                <div class="card-title p-2 m-0 font-weight-bold text-right">
+                    {{ friend.name }}
+                </div>
+            </div>
+        </div> 
+    </div>
+    {% endfor %}
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        {{ friends.render|raw }}
+    </div>
+</div>

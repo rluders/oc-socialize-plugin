@@ -1,0 +1,70 @@
+{% if can_be_friend(profile.user.id) %}
+
+<button
+    type="button"
+    class="btn btn-sm btn-default"
+    data-request="{{__SELF__}}::onSend"
+    data-request-data="user: {{ profile.user.id }}"
+    data-request-update="'{{__SELF__}}::actions': '#friendshipActions'"
+    data-attach-loading>
+        Add friend
+</button>
+
+{% elseif has_sent_friend_request_to(profile.user.id) %}
+
+<button
+    class="btn btn-sm btn-danger"
+    data-request="{{__SELF__}}::onCancel"
+    data-request-data="user: {{ profile.user.id }}"
+    data-request-update="'{{__SELF__}}::actions': '#friendshipActions'"
+    data-attach-loading>
+    Cancel friend request
+</button>
+
+{% elseif has_friend_request_from(profile.user.id) %}
+
+<button
+    class="btn btn-sm btn-success"
+    data-request="{{__SELF__}}::onAccept"
+    data-request-data="user: {{ profile.user.id }}"
+    data-request-update="'{{__SELF__}}::actions': '#friendshipActions'"
+    data-attach-loading>
+    Accept friend
+</button>
+
+<button
+    class="btn btn-sm btn-danger"
+    data-request="{{__SELF__}}::onDecline"
+    data-request-data="user: {{ profile.user.id }}"
+    data-request-update="'{{__SELF__}}::actions': '#friendshipActions'"
+    data-attach-loading>
+    Decline
+</button>
+
+{% elseif is_friend_with(profile.user.id) %}
+
+<div class="dropdown">
+    <button
+        class="btn btn-sm btn-primary dropdown-toggle"
+        type="button"
+        id="friendshipDropdown"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="true">
+        Friends
+        <span class="caret"></span>
+    </button>
+    <div class="dropdown-menu" aria-labelledby="friendshipDropdown">
+        <a
+            href="#"
+            data-request="{{__SELF__}}::onRemove"
+            data-request-confirm="Are you sure?"
+            data-request-data="user: {{ profile.user.id }}"
+            data-request-update="'{{__SELF__}}::actions': '#friendshipActions'"
+            data-attach-loading>
+            Unfriend
+        </a>
+    </div>
+</div>
+
+{% endif %}
