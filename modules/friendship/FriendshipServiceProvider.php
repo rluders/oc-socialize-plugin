@@ -2,15 +2,17 @@
 
 namespace RLuders\Socialize\Modules\Friendship;
 
+use App;
+use Auth;
+use Event;
 use Config;
 use RainLab\User\Models\User;
-use Cms\Classes\ComponentManager;
-use System\Classes\MarkupManager;
-use October\Rain\Support\ServiceProvider;
 use RLuders\Socialize\Models\Friendship;
+use RLuders\Socialize\Classes\AbstractModuleServiceProvider;
 use RLuders\Socialize\Modules\Friendship\Behaviors\Friendable;
+use RLuders\Socialize\Modules\Friendship\Actions\AcceptFriendship;
 
-class FriendshipServiceProvider extends ServiceProvider
+class FriendshipServiceProvider extends AbstractModuleServiceProvider
 {
     /**
      * Register bindings in the container.
@@ -20,7 +22,29 @@ class FriendshipServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadConfig();
+        $this->extendUser();
+        $this->registerSettings();
+        $this->registerRoutes();
+    }
 
+    /**
+     * Load module configuration
+     *
+     * @return void
+     */
+    protected function loadConfig()
+    {
+        $config = include_once realpath(__DIR__ . '/config/friendships.php');
+        Config::set('friendships', $config);
+    }
+
+    /**
+     * Extend the user to create the relationship with friendship table
+     *
+     * @return void
+     */
+    protected function extendUser()
+    {
         User::extend(
             function ($model) {
                 // Implement the friendship behaviour to user
@@ -42,14 +66,44 @@ class FriendshipServiceProvider extends ServiceProvider
     }
 
     /**
-     * Load module configuration
+     * Add the configuration settings to Friendship on the OctoberCMS Backend
      *
      * @return void
      */
-    protected function loadConfig()
+    protected function registerSettings()
     {
-        $config = include_once realpath(__DIR__ . '/config/friendships.php');
-        Config::set('friendships', $config);
+        Event::listen(
+            'system.settings.extendItems',
+            function ($settings) {
+                $settings->registerSettingItems(
+                    'Rluders.Socialize_Friendship',
+                    [
+                        'settings' => [
+                            'label'       => 'Friendship',
+                            'description' => 'Friendship Module Configuration',
+                            'category'    => 'rluders.socialize::lang.system.categories.socialize',
+                            'icon'        => 'icon-user',
+                            'class'       => 'RLuders\Socialize\Modules\Friendship\Models\Settings',
+                            'order'       => 600,
+                            'permissions' => [
+                                'rluders.socialize.access_settings',
+                                'rluders.socialize.access_settings.friendship'
+                            ],
+                        ]
+                    ]
+                );
+            }
+        );
+    }
+
+    /**
+     * Register module API routes
+     *
+     * @return void
+     */
+    protected function registerRoutes()
+    {
+        include_once __DIR__ . "/routes.php";
     }
 
     /**

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use RLuders\Socialize\Modules\Friendship\Actions\SendFriendship;
 
-class FriendshipController extends BaseController
+class SendFriendshipController extends BaseController
 {
     /**
      * Controller constructor

@@ -3,9 +3,10 @@
 namespace RLuders\Socialize;
 
 use Auth;
+use RainLab\User\Models\User;
 use System\Classes\PluginBase;
 use System\Classes\SettingsManager;
-use RainLab\User\Models\User;
+use RLuders\Socialize\Models\Settings;
 
 /**
  * Socialize Plugin Information File.
@@ -51,7 +52,7 @@ class Plugin extends PluginBase
                 'category'    => 'rluders.socialize::lang.system.categories.socialize',
                 'icon'        => 'icon-cog',
                 'class'       => 'RLuders\Socialize\Models\Settings',
-                'order'       => 600,
+                'order'       => 500,
                 'permissions' => ['rluders.socialize.access_settings'],
             ]
         ];
@@ -79,17 +80,7 @@ class Plugin extends PluginBase
      */
     protected function getPluginModules()
     {
-        // @TODO Dynamic load by configuration
-        return [
-            // 'activity',
-            // 'album',
-            // 'comment',
-            // 'follow',
-            'friendship',
-            'profile',
-            // 'video',
-            // 'like'
-        ];
+        return Settings::instance()->getActiveModules();
     }
 
     /**
@@ -112,14 +103,7 @@ class Plugin extends PluginBase
      */
     public function register()
     {
-        $modules = $this->getPluginModules();
-
-        foreach ($modules as $module) {
-            $className = $this->getPluginModuleServiceProviderClassName($module);
-            if (class_exists($className)) {
-                $this->app->register($className);
-            }
-        }
+        //
     }
 
     /**
@@ -129,7 +113,13 @@ class Plugin extends PluginBase
      */
     public function boot()
     {
-        //
+        $modules = $this->getPluginModules();
+        foreach ($modules as $module) {
+            $className = $this->getPluginModuleServiceProviderClassName($module);
+            if (class_exists($className)) {
+                $this->app->register($className);
+            }
+        }
     }
 
     /**

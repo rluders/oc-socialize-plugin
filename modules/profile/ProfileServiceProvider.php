@@ -3,13 +3,13 @@
 namespace RLuders\Socialize\Modules\Profile;
 
 use Config;
-use RLuders\Socialize\Models\File;
+use Event;
 use RainLab\User\Models\User;
-use Cms\Classes\ComponentManager;
-use October\Rain\Support\ServiceProvider;
+use RLuders\Socialize\Models\File;
 use RainLab\User\Controllers\Users as UsersController;
+use RLuders\Socialize\Classes\AbstractModuleServiceProvider;
 
-class ProfileServiceProvider extends ServiceProvider
+class ProfileServiceProvider extends AbstractModuleServiceProvider
 {
     /**
      * Register bindings in the container.
@@ -18,13 +18,23 @@ class ProfileServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->extendUser();
+        $this->extendUserController();
+        $this->registerSettings();
+    }
+
+    protected function extendUser()
+    {
         User::extend(
             function ($model) {
                 // Profile cover relationship
                 $model->attachOne['cover'] = [File::class];
             }
         );
+    }
 
+    protected function extendUserController()
+    {
         UsersController::extendFormFields(
             function ($form, $model, $context) {
                 $form->addTabFields(
@@ -36,6 +46,32 @@ class ProfileServiceProvider extends ServiceProvider
                             'imageHeight' => 360, // @TODO Get it from plugin config
                             'imageWidth' => 1920, // @TODO Get it from plugin config
                             'tab' => 'rainlab.user::lang.user.account'
+                        ]
+                    ]
+                );
+            }
+        );
+    }
+
+    protected function registerSettings()
+    {
+        Event::listen(
+            'system.settings.extendItems',
+            function ($settings) {
+                $settings->registerSettingItems(
+                    'Rluders.Socialize_Profile',
+                    [
+                        'settings' => [
+                            'label'       => 'Profile',
+                            'description' => 'Profile Module Configuration',
+                            'category'    => 'rluders.socialize::lang.system.categories.socialize',
+                            'icon'        => 'icon-user',
+                            'class'       => 'RLuders\Socialize\Modules\Profile\Models\Settings',
+                            'order'       => 600,
+                            'permissions' => [
+                                'rluders.socialize.access_settings',
+                                'rluders.socialize.access_settings.profile'
+                            ],
                         ]
                     ]
                 );

@@ -6,10 +6,10 @@ Route::group(
         'namespace' => 'RLuders\Socialize\Modules\Friendship\Http\Controllers'
     ],
     function () {
-        Route::post('accept', 'AcceptFriendship');
-        Route::post('cancel', 'CancelFriendship');
-        Route::post('decline', 'DeclineFriendship');
-        Route::post('remove', 'RemoveFriendship');
-        Route::post('send', 'SendFriendship');
+        Route::post('accept', 'AcceptFriendshipController');
+        Route::post('cancel', 'CancelFriendshipController');
+        Route::post('decline', 'DeclineFriendshipController');
+        Route::post('remove', 'RemoveFriendshipController');
+        Route::post('send', 'SendFriendshipController');
     }
 );
