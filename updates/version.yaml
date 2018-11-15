@@ -2,3 +2,4 @@
   - First version of Socialize
   - create_friendships_table.php
   - create_friendship_groups_table.php
+  - create_files_table.php
