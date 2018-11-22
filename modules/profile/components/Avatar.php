@@ -25,12 +25,19 @@ class Avatar extends ComponentBase
      */
     public function onRun()
     {
-        // Nothing here for now
+        // @TODO How to disable this when the Avatar changer is not enabled?
+        $this->addJs($this->assetPath . '/assets/vendor/croppr/croppr.min.js');
+        $this->addJs($this->assetPath . '/assets/js/avatar.js');
+
+        $this->addCss($this->assetPath . '/assets/vendor/croppr/croppr.min.css');
+        $this->addCss($this->assetPath . '/assets/css/avatar.css');
     }
 
     public function defineProperties()
     {
-        return [];
+        return [
+            // width, height, crop type, others...
+        ];
     }
 
     /**

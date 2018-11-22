@@ -21,6 +21,7 @@ class Profile extends ComponentBase
     public function init()
     {
         $this->loadProfile();
+        $this->loadComponents();
     }
 
     /**
@@ -47,7 +48,7 @@ class Profile extends ComponentBase
                 'description'       => 'Change the page title to display the user name.',
                 'default'           => '{{ user.name }}\'s Profile',
                 'type'              => 'string'
-            ]
+            ],
         ];
     }
 
@@ -62,6 +63,16 @@ class Profile extends ComponentBase
             'name' => 'User Profile',
             'description' => 'Put the user profile data into view.'
         ];
+    }
+
+    protected function loadComponents()
+    {
+        // @TODO Is it possible to expose the component properties?
+        $this->addComponent(
+            'RLuders\Socialize\Modules\Profile\Components\Avatar',
+            'avatar',
+            []
+        );
     }
 
     /**
