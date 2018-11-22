@@ -26,7 +26,8 @@
         avatarImage.src = e.target.result;
 
         cropInstance = new Croppr('#rls-avatar-image', {
-            // ...options
+            aspectRatio: 1,
+            startSize: [80, 80, '%']
         });
     };
 
