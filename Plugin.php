@@ -135,7 +135,10 @@ class Plugin extends PluginBase
         foreach ($modules as $module) {
             $className = $this->getPluginModuleServiceProviderClassName($module);
             if (class_exists($className) && method_exists($className, 'getComponents')) {
-                $components += $className::getComponents();
+                $components = array_merge_recursive(
+                    $components,
+                    $className::getComponents()
+                );
             }
         }
 
@@ -155,7 +158,10 @@ class Plugin extends PluginBase
         foreach ($modules as $module) {
             $className = $this->getPluginModuleServiceProviderClassName($module);
             if (class_exists($className) && method_exists($className, 'getMarkupTags')) {
-                $markupTags += $className::getMarkupTags();
+                $markupTags = array_merge_recursive(
+                    $markupTags,
+                    $className::getMarkupTags()
+                );
             }
         }
 
