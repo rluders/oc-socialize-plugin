@@ -1,11 +1,10 @@
 (function (Croppr) {
 
-    const reader = new FileReader();
-    const avatarImage = document.getElementById('rls-avatar-image');
+    var cropInstance = null;
 
-    const avatarInput = document.createElement('input');
-    avatarInput.setAttribute('type', 'file');
-    avatarInput.setAttribute('name', 'file');
+    const fileReader = new FileReader();
+    const avatarImage = document.getElementById('rls-avatar-image');
+    const avatarInput = document.getElementById('rls-avatar-input');
 
     document.querySelectorAll('[rls-avatar-changer]').forEach(elm => {
         elm.addEventListener('click', e => {
@@ -14,9 +13,7 @@
         });
     });
 
-    var cropInstance = null;
-
-    reader.onload = e => {
+    fileReader.onload = e => {
         $('#rls-avatar-modal').modal('show');
 
         if (cropInstance) {
@@ -27,15 +24,18 @@
 
         cropInstance = new Croppr('#rls-avatar-image', {
             aspectRatio: 1,
-            startSize: [80, 80, '%']
+            startSize: [80, 80, '%'],
+            onCropEnd: value => {
+                console.log(value);
+            }
         });
     };
 
     avatarInput.addEventListener('change', e => {
-        if (e.target.files.length == 0) return;
-
-        const f = e.target.files[0];
-        reader.readAsDataURL(f);
+        if (e.target.files.length > 0) {
+            const f = e.target.files[0];
+            fileReader.readAsDataURL(f);
+        }
     });
 
 }) (Croppr);

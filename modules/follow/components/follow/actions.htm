@@ -1,0 +1,9 @@
+<button 
+    type="button" 
+    class="btn btn-sm btn-default"
+    data-request="{{__SELF__}}::onFollow"
+    data-request-data="followee_id: {{ follower_id }}, followee_type: {{ followee_type }}"
+    data-request-update="'{{__SELF__}}::actions': '#followActions'"
+    data-attach-loading>
+        Follow
+</button>

@@ -33,7 +33,7 @@ trait Friendable
             return false;
         }
 
-        Event::fire('friendships.sent', [$this->getSender(), $recipient]);
+        Event::fire('rluders.socialize.friendships.sent', [$this->getSender(), $recipient]);
 
         return $this->getSender()->friends()->create(
             [
@@ -53,7 +53,7 @@ trait Friendable
      */
     public function unfriend(Model $recipient)
     {
-        Event::fire('friendships.cancelled', [$this->getSender(), $recipient]);
+        Event::fire('rluders.socialize.friendships.cancelled', [$this->getSender(), $recipient]);
 
         return $this->findFriendship($recipient)->delete();
     }
@@ -111,7 +111,7 @@ trait Friendable
      */
     public function acceptFriendRequest(Model $recipient)
     {
-        Event::fire('friendships.accepted', [$this->getSender(), $recipient]);
+        Event::fire('rluders.socialize.friendships.accepted', [$this->getSender(), $recipient]);
 
         return $this->findFriendship($recipient)
             ->whereRecipient($this->getSender())
@@ -127,7 +127,7 @@ trait Friendable
      */
     public function denyFriendRequest(Model $recipient)
     {
-        Event::fire('friendships.denied', [$this->getSender(), $recipient]);
+        Event::fire('rluders.socialize.friendships.denied', [$this->getSender(), $recipient]);
 
         return $this->findFriendship($recipient)
             ->whereRecipient($this->getSender())
@@ -203,7 +203,7 @@ trait Friendable
      */
     public function cancelFriendRequestTo(Model $recipient)
     {
-        Event::fire('friendships.canceled', [$this->getSender(), $recipient]);
+        Event::fire('rluders.socialize.friendships.canceled', [$this->getSender(), $recipient]);
 
         return $this->findFriendship($recipient)->delete();
     }
@@ -225,7 +225,7 @@ trait Friendable
 
         $friendship = Friendship::create(['status' => Status::BLOCKED]);
 
-        Event::fire('friendships.blocked', [$this->getSender(), $recipient]);
+        Event::fire('rluders.socialize.friendships.blocked', [$this->getSender(), $recipient]);
 
         return $this->getSender()->friends()->save($friendship);
     }
@@ -239,7 +239,7 @@ trait Friendable
      */
     public function unblockFriend(Model $recipient)
     {
-        Event::fire('friendships.unblocked', [$this->getSender(), $recipient]);
+        Event::fire('rluders.socialize.friendships.unblocked', [$this->getSender(), $recipient]);
 
         return $this->findFriendship($recipient)->whereSender($this->getSender())->delete();
     }

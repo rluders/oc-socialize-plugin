@@ -20,7 +20,7 @@ class Settings extends Model
             'profile'
         ];
 
-        Event::fire('rluders.socialize.get_active_modules', [&$modules]);
+        Event::fire('rluders.socialize.getActiveModules', [&$modules]);
 
         foreach ($this->attributes as $key => $value) {
             if ($value == 0) {

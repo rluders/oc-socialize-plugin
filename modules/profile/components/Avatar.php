@@ -3,8 +3,8 @@
 namespace RLuders\Socialize\Modules\Profile\Components;
 
 use Auth;
-use Response;
 use Cms\Classes\ComponentBase;
+use RLuders\Socialize\Modules\Profile\Actions\UploadAvatar;
 
 class Avatar extends ComponentBase
 {
@@ -55,15 +55,18 @@ class Avatar extends ComponentBase
 
     public function onSubmit()
     {
-        // we assume you post `base64` string in `image`
-        $image = input('image');
+        $file = \Input::file('image');
 
-        $user = Auth::getUser();
-        $filename = "{$user->id}_avatar.jpg";
+        $action = new UploadAvatar();
+        $result = $action->execute(
+            [
+                'user' => Auth::getUser(),
+                'path' => $file->getPathName()
+            ]
+        );
 
-        // attach that $file to Model
-        $user->avatar = $this->createFile($image, $filename);
-        if ($user->save()) {
+        // @TODO Convert to responsable
+        if ($result) {
 
             return [
                 'title' => 'Success!',
@@ -79,14 +82,5 @@ class Avatar extends ComponentBase
             'message' => 'Unable to save your data.',
             'type' => 'error'
         ];
-    }
-
-    protected function createFile($data, $filename)
-    {
-        $image = str_replace('data:image/jpeg;base64,', '', $data);
-        $image = str_replace(' ', '+', $image);
-        $imageData = base64_decode($image);
-
-        return (new \RLuders\Socialize\Models\File)->fromData($imageData, $filename);
     }
 }
