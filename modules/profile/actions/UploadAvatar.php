@@ -8,26 +8,31 @@ class UploadAvatar extends AbstractAction
 {
     protected function handle(array $data = null)
     {
-        if (isset($data['path'])) {
+        if (!isset($data['file'])) {
             return null;
         }
 
-        $user = isset($data['user']) ? $user : Auth::getUser();
-        $path = $data['path'];
+        $file = $data['file'];
+        $user = isset($data['user'])
+            ? $data['user']
+            : Auth::getUser();
 
-        $filename = "{$user->id}_avatar.jpg";
-
-        $user->avatar = $this->createFile($path, $filename);
+        $user->avatar = $this->createFile(
+            $file,
+            "{$user->id}_avatar.jpg"
+        );
 
         return $user->save();
     }
 
-    protected function createFile($filepath, $filename)
+    protected function createFile($file, $filename)
     {
-        return (new \RLuders\Socialize\Models\File)
-            ->fromData(
-                file_get_contents($file->getPathName()),
-                $filename
+        return (new \System\Models\File)
+            ->create(
+                [
+                    'data' => $file,
+                    'file_name' => $filename
+                ]
             );
     }
 }

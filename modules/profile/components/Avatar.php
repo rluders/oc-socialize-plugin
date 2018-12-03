@@ -56,12 +56,13 @@ class Avatar extends ComponentBase
     public function onSubmit()
     {
         $file = \Input::file('image');
+        $user = Auth::getUser();
 
         $action = new UploadAvatar();
         $result = $action->execute(
             [
-                'user' => Auth::getUser(),
-                'path' => $file->getPathName()
+                'user' => $user,
+                'file' => $file
             ]
         );
 
