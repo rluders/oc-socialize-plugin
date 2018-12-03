@@ -5,13 +5,15 @@ This plugin adds to [OctoberCMS](https://octobercms.com) some social network fea
 ## Dependencies
 
 ### Libraries
+
 - [Intervention Image](http://image.intervention.io/)
 
-### Other plugins
+### Plugins
+
 - [RainLab.User](https://github.com/rainlab/user-plugin)
 - [Esroyo.UserProfile](https://github.com/esroyo/oc-userprofile-plugin)
 
-## Supported Themes
+## Themes
 
 - [Socialize Theme](https://github.com/rluders/oc-socialize-theme)
 
