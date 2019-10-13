@@ -1,4 +1,4 @@
-# Socialize
+![Socialize Plugin](./assets/images/socialize-cover.png)
 
 This plugin adds to [OctoberCMS](https://octobercms.com) some social network features.
 
@@ -32,6 +32,7 @@ So, any PR that doesn't follow this requirements will be rejected.
 ## License
 
 GNU General Public License v3
+Icon made by freepik from www.flaticon.com
 
 ## Special Thanks
 
