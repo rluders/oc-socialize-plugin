@@ -31,7 +31,8 @@ So, any PR that doesn't follow this requirements will be rejected.
 
 ## License
 
-GNU General Public License v3
+Plugin is under GNU General Public License v3
+
 Icon made by freepik from www.flaticon.com
 
 ## Special Thanks
