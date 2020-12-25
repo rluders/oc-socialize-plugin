@@ -19,7 +19,7 @@
 
 This plugin adds to [OctoberCMS](https://octobercms.com) some social network features.
 
-> NOTE: This is still under development and I do not recommend you to use it on production. I mean, you can, but be aware that things could change or being broken.
+> NOTE: This plugin still under development and I do not recommend you to use it on production. I mean, you can, but be aware that things could change or being broken.
 
 ## Dependencies
 
@@ -30,8 +30,8 @@ This plugin adds to [OctoberCMS](https://octobercms.com) some social network fea
 ### Plugins
 
 - [RainLab.User](https://github.com/rainlab/user-plugin)
-- [RLuders.JWTAuth](https://github.com/rluders/oc-jwtauth-plugin) (optional)
-- [RLuders.CORS](https://github.com/rluders/oc-cors-plugin) (optional)
+- [RLuders.JWTAuth](https://github.com/rluders/oc-jwtauth-plugin) (_optional_)
+- [RLuders.CORS](https://github.com/rluders/oc-cors-plugin) (_optional_)
 
 ## Themes
 
@@ -39,12 +39,12 @@ This plugin adds to [OctoberCMS](https://octobercms.com) some social network fea
 
 - No themes yet!
 
-## License
-
-- The project code is licensed under GPLv3 (check the [LICENSE](./LICENSE) file).
-- Icon made by freepik from [www.flaticon.com](www.flaticon.com)
-
 ## Special Thanks
 
 This plugin is inspired by [laravel-friendship](https://github.com/hootlex/laravel-friendships).
 Thanks a lot, you give me the ideas and inspiration for this implementation.
+
+## License
+
+- The project code is licensed under GPLv3 (check the [LICENSE](./LICENSE) file).
+- Icon made by freepik from [www.flaticon.com](www.flaticon.com)
