@@ -32,7 +32,9 @@ class Friendship extends ComponentBase
      */
     public function onRun()
     {
-        $this->addJs($this->assetPath . '/assets/js/friendship.js');
+        if (Auth::check()) {
+            $this->addJs($this->assetPath . '/assets/js/friendship.js');
+        }
     }
 
     /**

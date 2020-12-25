@@ -10,6 +10,7 @@ class UserList extends ComponentBase
 {
     public function onRun()
     {
+        $this->page['profilePage'] = $this->property('profilePage');
         $friends = User::paginate($this->property('maxItems'));
         $this->page['friends'] = $friends;
     }
@@ -37,6 +38,12 @@ class UserList extends ComponentBase
                 'type'              => 'string',
                 'validationPattern' => '^[0-9]+$',
                 'validationMessage' => 'The Max Items property can contain only numeric symbols'
+            ],
+            'profilePage' => [
+                'title' => 'Profile URL',
+                'description' => 'The profile url page',
+                'default' => 'user',
+                'type' => 'string'
             ]
         ];
     }

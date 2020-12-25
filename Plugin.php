@@ -44,17 +44,18 @@ class Plugin extends PluginBase
      */
     public function registerSettings()
     {
-        return [
-            'settings' => [
-                'label'       => 'rluders.socialize::lang.settings.menu_label',
-                'description' => 'rluders.socialize::lang.settings.menu_description',
-                'category'    => 'rluders.socialize::lang.system.categories.socialize',
-                'icon'        => 'icon-cog',
-                'class'       => 'RLuders\Socialize\Models\Settings',
-                'order'       => 500,
-                'permissions' => ['rluders.socialize.access_settings'],
-            ]
-        ];
+        return [];
+        // return [
+        //     'settings' => [
+        //         'label'       => 'rluders.socialize::lang.settings.menu_label',
+        //         'description' => 'rluders.socialize::lang.settings.menu_description',
+        //         'category'    => 'rluders.socialize::lang.system.categories.socialize',
+        //         'icon'        => 'icon-cog',
+        //         'class'       => 'RLuders\Socialize\Models\Settings',
+        //         'order'       => 500,
+        //         'permissions' => ['rluders.socialize.access_settings'],
+        //     ]
+        // ];
     }
 
     /**

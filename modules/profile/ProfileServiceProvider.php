@@ -20,7 +20,7 @@ class ProfileServiceProvider extends AbstractModuleServiceProvider
     {
         // $this->extendUser();
         // $this->extendUserController();
-        $this->registerSettings();
+        // $this->registerSettings();
     }
 
     protected function extendUser()

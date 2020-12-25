@@ -23,7 +23,7 @@ class FriendshipServiceProvider extends AbstractModuleServiceProvider
     {
         $this->loadConfig();
         $this->extendUser();
-        $this->registerSettings();
+        // $this->registerSettings();
         $this->registerRoutes();
     }
 
