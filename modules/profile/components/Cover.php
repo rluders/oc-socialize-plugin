@@ -57,14 +57,12 @@ class Cover extends ComponentBase
         // attach that $file to Model
         $user->cover = $this->createFile($image, $filename);
         if ($user->save()) {
-
             return [
                 'title' => 'Success!',
                 'message' => 'Cover updated.',
                 'type' => 'success',
                 'image' => $user->cover->getPath()
             ];
-
         }
 
         return [

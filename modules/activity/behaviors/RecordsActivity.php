@@ -5,13 +5,13 @@ namespace RLuders\Socialize\Modules\Activity\Behaviors;
 use ReflectionClass;
 use October\Rain\Extension\ExtensionBase;
 use Illuminate\Database\Eloquent\Model;
-use RLuders\Socialize\Modules\Activity\Traits\RecordsActivity 
+use RLuders\Socialize\Modules\Activity\Traits\RecordsActivity
     as RecordsActivityTrait;
 
 class RecordsActivity extends ExtensionBase
 {
     use RecordsActivityTrait;
-    
+
     /**
      * @var Model
      */
@@ -24,7 +24,7 @@ class RecordsActivity extends ExtensionBase
      */
     public function __construct(Model $model)
     {
-        $this->model = $model;        
+        $this->model = $model;
     }
 
     /**

@@ -58,7 +58,7 @@ class FollowRelation extends Model
      *
      * @param \Illuminate\Database\Eloquent\Builde $query
      * @param string|null $type
-     * 
+     *
      * @return void
      */
     public function scopePopular($query, $type = null)

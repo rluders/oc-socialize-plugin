@@ -18,8 +18,8 @@ class ProfileServiceProvider extends AbstractModuleServiceProvider
      */
     public function boot()
     {
-        $this->extendUser();
-        $this->extendUserController();
+        // $this->extendUser();
+        // $this->extendUserController();
         $this->registerSettings();
     }
 
@@ -28,7 +28,7 @@ class ProfileServiceProvider extends AbstractModuleServiceProvider
         User::extend(
             function ($model) {
                 // Profile cover relationship
-                $model->attachOne['cover'] = [File::class];
+                // $model->attachOne['cover'] = [File::class];
             }
         );
     }

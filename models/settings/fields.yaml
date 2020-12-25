@@ -3,18 +3,6 @@
 # ===================================
 
 fields:
-  module_album:
-    label: User Album
-    type: switch
-    comment: Allow users to create album and upload photos
-    on: 'On'
-    off: 'Off'
-  module_video:
-    label: User Video
-    type: switch
-    comment: Allow uses to upload videos
-    on: 'On'
-    off: 'Off'
   module_follow:
     label: Followable
     type: switch

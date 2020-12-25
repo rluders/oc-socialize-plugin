@@ -68,14 +68,12 @@ class Avatar extends ComponentBase
 
         // @TODO Convert to responsable
         if ($result) {
-
             return [
                 'title' => 'Success!',
                 'message' => 'Avatar updated.',
                 'type' => 'success',
                 'image' => $user->avatar->getPath()
             ];
-
         }
 
         return [

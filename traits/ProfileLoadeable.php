@@ -13,8 +13,8 @@ trait ProfileLoadeable
      */
     public function loadProfile()
     {
-        $slug = $this->param('user');
-        $key = $this->property('userSlug', 'username');
+        $slug = strtolower($this->param('user'));
+        $key = strtolower($this->property('userSlug', 'username'));
 
         $user = User::where($key, $slug)->first();
         $this->page['socialize'] = [

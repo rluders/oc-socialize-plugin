@@ -18,7 +18,7 @@ class CreateFollowRelationTable extends Migration
                 $table->string('follower_id');
                 $table->string('follower_type');
                 $table->string('followee_id');
-                $table->string('followee_type');                             
+                $table->string('followee_type');
                 $table->timestamps();
                 $table->softDeletes();
             }

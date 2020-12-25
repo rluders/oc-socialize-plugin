@@ -18,7 +18,7 @@ class CreateActivityTable extends Migration
                 $table->string('subject_id');
                 $table->string('subject_type');
                 $table->string('name');
-                $table->unsignedInteger('user_id');                
+                $table->unsignedInteger('user_id');
                 $table->timestamps();
                 $table->softDeletes();
             }
