@@ -4,7 +4,7 @@
 
 <button
     type="button"
-    class="btn btn-sm btn-default"
+    class="btn btn-sm btn-primary"
     data-request="{{__SELF__}}::onSend"
     data-request-data="user: {{ profile.user.id }}"
     data-request-update="'{{__SELF__}}::actions': '#friendshipActions'"
@@ -45,28 +45,23 @@
 
 {% elseif is_friend_with(profile.user.id) %}
 
-<div class="dropdown">
-    <button
-        class="btn btn-sm btn-primary dropdown-toggle"
-        type="button"
-        id="friendshipDropdown"
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="true">
+<div class="btn-group">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
         Friends
-        <span class="caret"></span>
     </button>
-    <div class="dropdown-menu" aria-labelledby="friendshipDropdown">
-        <a
-            href="#"
-            data-request="{{__SELF__}}::onRemove"
-            data-request-confirm="Are you sure?"
-            data-request-data="user: {{ profile.user.id }}"
-            data-request-update="'{{__SELF__}}::actions': '#friendshipActions'"
-            data-attach-loading>
-            Unfriend
-        </a>
-    </div>
+    <ul class="dropdown-menu">
+        <li>
+            <a
+                href="#"
+                class="dropdown-item"
+                data-request="{{__SELF__}}::onRemove"
+                data-request-confirm="Are you sure?"
+                data-request-data="user: {{ profile.user.id }}"
+                data-request-update="'{{__SELF__}}::actions': '#friendshipActions'"
+                data-attach-loading>
+                Unfriend
+            </a>
+        </li>
+    </ul>
 </div>
-
 {% endif %}
