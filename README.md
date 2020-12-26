@@ -37,7 +37,7 @@ This plugin adds to [OctoberCMS](https://octobercms.com) some social network fea
 
 > Do you have a theme that supports this plugin? Let us know about it. Submit a PR adding it to the list.
 
-- No themes yet!
+- [Official Socialize Theme](https://github.com/rluders/oc-socialize-theme)
 
 ## Special Thanks
 
