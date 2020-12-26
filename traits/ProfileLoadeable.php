@@ -17,6 +17,10 @@ trait ProfileLoadeable
         $key = strtolower($this->property('userSlug', 'username'));
 
         $user = User::where($key, $slug)->first();
+        if (!$user) {
+            return \Response::make('Page not found', 404);
+        }
+
         $this->page['socialize'] = [
             'user' => $user
         ];

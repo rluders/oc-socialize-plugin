@@ -82,6 +82,10 @@ class Profile extends ComponentBase
      */
     protected function updateProfileTitle()
     {
+        if (!isset($this->page['socialize'])) {
+            return;
+        }
+
         $text = $this->property('userPageTitle', 'name');
         if ($text) {
             $this->page->title = Twig::parse(
