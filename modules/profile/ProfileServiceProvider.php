@@ -8,6 +8,7 @@ use RainLab\User\Models\User;
 use RLuders\Socialize\Models\File;
 use RainLab\User\Controllers\Users as UsersController;
 use RLuders\Socialize\Classes\AbstractModuleServiceProvider;
+use RLuders\Socialize\Modules\Profile\Behaviors\HasCover;
 
 class ProfileServiceProvider extends AbstractModuleServiceProvider
 {
@@ -27,6 +28,9 @@ class ProfileServiceProvider extends AbstractModuleServiceProvider
     {
         User::extend(
             function ($model) {
+                // Implement the cover behaviour to user
+                $model->implement[] = HasCover::class;
+
                 // Profile cover relationship
                 $model->attachOne['cover'] = File::class;
             }

@@ -73,6 +73,16 @@ class Profile extends ComponentBase
             'avatar',
             []
         );
+        $this->addComponent(
+            'RLuders\Socialize\Modules\Profile\Components\Cover',
+            'cover',
+            []
+        );
+        $this->addComponent(
+            'RLuders\Socialize\Modules\Friendship\Components\Friendship',
+            'friendship',
+            []
+        );
     }
 
     /**

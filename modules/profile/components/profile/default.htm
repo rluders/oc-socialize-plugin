@@ -1,26 +1,22 @@
-<div class="container">
+{% if socialize.user %}
 
-    <div class="row">
+{% component 'cover' %}
 
-        <div class="col-12">
-            {% if socialize.user %}
+{% component 'avatar' %}
 
-            {% component 'avatar' %}
-
-            <h1>{{ socialize.user.name }}'s Profile</h1>
-
-            <p><strong>Username:</strong> {{ socialize.user.username }}</p>
-            <p><strong>Firstname:</strong> {{ socialize.user.name }}</p>
-            <p><strong>Surname:</strong> {{ socialize.user.surname }}</p>
-            <p><strong>E-mail:</strong> {{ socialize.user.email }}</p>
-
-            <h2>User dump</h2>
-            <code>
-                {{ socialize.user }}
-            </code>
-
-            {% endif %}
-        </div>
-    </div>
-
+<h1>{{ socialize.user.name }}'s Profile</h1>
+<div class="p-2 mb-4">
+    {% component 'friendship' %}
 </div>
+
+<p><strong>Username:</strong> {{ socialize.user.username }}</p>
+<p><strong>Firstname:</strong> {{ socialize.user.name }}</p>
+<p><strong>Surname:</strong> {{ socialize.user.surname }}</p>
+<p><strong>E-mail:</strong> {{ socialize.user.email }}</p>
+
+<h2>User dump</h2>
+<code>
+    {{ socialize.user }}
+</code>
+
+{% endif %}
