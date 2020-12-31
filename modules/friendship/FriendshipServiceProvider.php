@@ -2,7 +2,6 @@
 
 namespace RLuders\Socialize\Modules\Friendship;
 
-use App;
 use Auth;
 use Event;
 use Config;
@@ -10,7 +9,6 @@ use RainLab\User\Models\User;
 use RLuders\Socialize\Models\Friendship;
 use RLuders\Socialize\Classes\AbstractModuleServiceProvider;
 use RLuders\Socialize\Modules\Friendship\Behaviors\Friendable;
-use RLuders\Socialize\Modules\Friendship\Actions\AcceptFriendship;
 
 class FriendshipServiceProvider extends AbstractModuleServiceProvider
 {
